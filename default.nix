@@ -4,12 +4,10 @@
 }:
 
 rec {
-  config = pkgs.nixos ./configuration.nix;
+  config = (pkgs.nixos ./configuration.nix).toplevel;
   activator = pkgs.writeScriptBin "activate" ''
       exec -a systemd-run ${pkgs.systemd}/bin/systemd-run \
         --description "Hail: Activate new configuration" \
-        -E PATH=$PATH \
-        -E LOCALE_ARCHIVE=$LOCALE_ARCHIVE \
-        ${config.toplevel}/bin/switch-to-configuration switch
+        ${config}/bin/switch-to-configuration switch
     '';
 }
