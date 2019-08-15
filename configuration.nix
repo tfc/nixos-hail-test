@@ -11,13 +11,25 @@
     wheelNeedsPassword = false;
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 2222 ];
+    openFirewall = true;
+  }
 
   system.stateVersion = "19.03";
 
-  users.extraUsers.demo = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    initialPassword = "foobar";
+  users.extraUsers = {
+    demo = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      initialPassword = "foobar";
+    };
+
+    demo2 = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ];
+      initialPassword = "foobar";
+    };
   };
 }
