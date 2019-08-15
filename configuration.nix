@@ -4,6 +4,8 @@
   imports = [ <nixpkgs/nixos/modules/installer/virtualbox-demo.nix> ];
   documentation.nixos.enable = false;
 
+  networking.firewall.allowedTCPPorts = [ 22 2222 ];
+
   programs.command-not-found.enable = false;
 
   security.sudo = {
