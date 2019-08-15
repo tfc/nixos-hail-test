@@ -6,6 +6,16 @@
 
   networking.firewall.allowedTCPPorts = [ 22 2222 3333 ];
 
+  nix.binaryCachePublicKeys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "cache.vpn.cyberus-technology.de:Snf50jUtTSHKmuv7Iz268zI9eCG8CYefCGpEq2Bt1P8="
+  ];
+
+  nix.binaryCaches = [
+    "https://cache.nixos.org"
+    "http://binary-cache.vpn.cyberus-technology.de"
+  ];
+
   programs.command-not-found.enable = false;
 
   security.sudo = {
