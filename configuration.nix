@@ -4,8 +4,6 @@
   imports = [ <nixpkgs/nixos/modules/installer/virtualbox-demo.nix> ];
   documentation.nixos.enable = false;
 
-  nixpkgs.config.allowBroken = true;
-
   programs.command-not-found.enable = false;
 
   security.sudo = {
@@ -24,6 +22,7 @@
     hydraJobUri = https://hydra.kosmosgame.com/job/github/nixos-hail-test/activator;
     package = pkgs.haskellPackages.hail.overrideAttrs (old: {
       patches = [ ./hail.patch ];
+      meta.broken = false;
     });
   };
 
