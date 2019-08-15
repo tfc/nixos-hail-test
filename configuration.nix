@@ -15,7 +15,15 @@
     enable = true;
     ports = [ 22 2222 ];
     openFirewall = true;
-  }
+  };
+
+  services.hail = {
+    enable = true;
+    hydraJobUri = https://hydra.kosmosgame.com/job/github/nixos-hail-test/activator;
+    package = pkgs.haskellPackages.hail.overrideAttrs (old: {
+      patches = [ ./hail.patch ];
+    });
+  };
 
   system.stateVersion = "19.03";
 
