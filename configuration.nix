@@ -4,8 +4,6 @@
   imports = [ <nixpkgs/nixos/modules/installer/virtualbox-demo.nix> ];
   documentation.nixos.enable = false;
 
-  networking.firewall.allowedTCPPorts = [ 22 2222 3333 ];
-
   nix.binaryCachePublicKeys = [
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     "cache.vpn.cyberus-technology.de:Snf50jUtTSHKmuv7Iz268zI9eCG8CYefCGpEq2Bt1P8="
@@ -25,7 +23,7 @@
 
   services.openssh = {
     enable = true;
-    ports = [ 22 2222 3333 ];
+    ports = [ 22 2222 4444 ];
     openFirewall = true;
   };
 
