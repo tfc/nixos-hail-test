@@ -1,10 +1,11 @@
 {
   nixpkgs ? <nixpkgs>,
+  nixos ? <nixpkgs/nixos>,
   pkgs ? import nixpkgs {}
 }:
 
 let
-  configBuilder = import "${pkgs.path}/nixos";
+  configBuilder = import nixos;
   config = configBuilder { configuration = ./configuration.nix; };
 in
   pkgs.writeScriptBin "activate" ''
